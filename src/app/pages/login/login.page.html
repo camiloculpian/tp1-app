@@ -6,34 +6,33 @@
 
 <ion-content>
   <div class="login-container">
-    <form [formGroup]="credentials" (ngSubmit)="login()">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
       <ion-item>
         <ion-label position="floating">Email</ion-label>
-        <ion-input type="email" formControlName="email"></ion-input>
+        <ion-input type="email" formControlName="email" ngDefaultControl></ion-input>
       </ion-item>
       <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="errors">
         <ion-text color="danger" *ngIf="email?.hasError('required')">
-          Email is required
+          El email es requerido
         </ion-text>
         <ion-text color="danger" *ngIf="email?.hasError('email')">
-          Email is invalid
+          El email es invalido
         </ion-text>
       </div>
       <ion-item>
         <ion-label position="floating">Password</ion-label>
-        <ion-input type="{{ showPassword ? 'text' : 'password' }}" formControlName="password"></ion-input>
-        <ion-icon [name]="showPassword ? 'eye-outline' : 'eye-off-outline'" slot="end"
-          (click)="showPassword = !showPassword"></ion-icon>
+        <ion-input id="password" type="{{ showPassword ? 'text' : 'password' }}" formControlName="password" ngDefaultControl></ion-input>
+        <ion-icon [name]="showPassword ? 'eye-outline' : 'eye-off-outline'" slot="end" (click)="showPassword = !showPassword"></ion-icon>
       </ion-item>
       <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="errors">
         <ion-text color="danger" *ngIf="password?.hasError('required')">
-          Password is required
+          La contraseña es requerida
         </ion-text>
         <ion-text color="danger" *ngIf="password?.hasError('minlength')">
-          Password must be at least 6 characters long
+          La contraseña debe tener almenos 4 caracteres
         </ion-text>
       </div>
-      <ion-button expand="block" type="submit" [disabled]="!credentials.valid">Login</ion-button>
+      <ion-button expand="block" type="submit" [disabled]="!loginForm.valid">Login</ion-button>
     </form>
     <ion-button expand="block" fill="clear" (click)="navigateToRegister()">No tienes Usuario?, REGISTRATE</ion-button>
   </div>
