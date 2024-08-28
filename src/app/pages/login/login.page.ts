@@ -5,6 +5,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonItem, IonLabel, IonText
 import { Router } from '@angular/router';
 import {addIcons} from "ionicons";
 import { eyeOutline, eyeOffOutline } from 'ionicons/icons';
+import { environment } from 'src/app/app.component';
 
 @Component({
   selector: 'app-login',
@@ -35,6 +36,10 @@ export class LoginPage implements OnInit {
 
   login() {
     console.log(this.loginForm.value);
+    environment.loggedIn  = true;
+    console.log('Estas logueado? '+environment.loggedIn)
+
+    this.router.navigate(['']);
   }
 
   get email() {
@@ -46,7 +51,6 @@ export class LoginPage implements OnInit {
   }
 
   navigateToRegister() {
-    console.log('navigateToRegister()');
     this.router.navigate(['register']);
   }
 
