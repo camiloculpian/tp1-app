@@ -12,20 +12,21 @@ import { home , person, exit} from 'ionicons/icons';
   standalone: true,
   imports: [NgFor, IonIcon, RouterLink, IonItem, IonRouterOutlet, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent, IonMenu, IonMenuToggle, IonLabel],
 })
-export class MainContentComponent {
-  public activeTitle!: string;
+export class MainContentComponent{
+  public activeTitle: string='Home';
 
   public appPages = [
     { title: 'Home', url: '/main/home', icon: 'home' },
     { title: 'Perfil', url: '/main/profile', icon: 'person' },
   ];
   public labels = [];
-  constructor() {
+  constructor(private router: Router) {
     addIcons({ home, person, exit });
   }
 
   changeTitle(title:string){
     this.activeTitle = title;
+    console.log(this.activeTitle);
   }
 
 }

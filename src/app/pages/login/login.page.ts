@@ -19,6 +19,8 @@ import { AuthenticationService } from 'src/app/core/services/authentication.serv
 export class LoginPage implements OnInit {
   public loginForm: FormGroup;
   showPassword = false;
+  isAlertOpen = false;
+  alertButtons = ['Aceptar'];
 
   constructor(
     public formBuilder: FormBuilder,
@@ -36,14 +38,21 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
+  setOpen(isOpen: boolean) {
+    this.isAlertOpen = isOpen;
+  }
+
   login() {
     if(this.authService.login(this.loginForm.value)){
       this.router.navigate(['']);
-      console.log('Estas logueado? '+environment.loggedIn)
+      console.log('Estas logueado? '+environment.loggedIn);
     }else{
-      console.log('Estas logueado? '+environment.loggedIn)
+      this.setOpen(true);
+      console.log('Estas logueado? '+environment.loggedIn);
     }
   }
+
+  
 
   get email() {
     return this.loginForm.get('email');

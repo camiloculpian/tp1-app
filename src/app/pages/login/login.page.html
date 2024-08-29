@@ -36,4 +36,11 @@
     </form>
     <ion-button expand="block" fill="clear" (click)="navigateToRegister()">No tienes Usuario?, REGISTRATE</ion-button>
   </div>
+  <ion-alert
+    [isOpen]="isAlertOpen"
+    header="Credenciales Incorrectas"
+    message="Por favor chequea tu usuario y contraseña..."
+    [buttons]="alertButtons"
+    (didDismiss)="setOpen(false)"
+></ion-alert>
 </ion-content>
