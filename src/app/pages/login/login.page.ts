@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import {addIcons} from "ionicons";
 import { eyeOutline, eyeOffOutline } from 'ionicons/icons';
 import { environment } from 'src/app/app.component';
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +23,7 @@ export class LoginPage implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private router: Router,
+    private authService : AuthenticationService,
   ) { 
       addIcons({ eyeOutline, eyeOffOutline, });
 
@@ -35,11 +37,12 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    console.log(this.loginForm.value);
-    environment.loggedIn  = true;
-    console.log('Estas logueado? '+environment.loggedIn)
-
-    this.router.navigate(['']);
+    if(this.authService.login(this.loginForm.value)){
+      this.router.navigate(['']);
+      console.log('Estas logueado? '+environment.loggedIn)
+    }else{
+      console.log('Estas logueado? '+environment.loggedIn)
+    }
   }
 
   get email() {

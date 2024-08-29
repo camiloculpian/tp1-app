@@ -1,16 +1,28 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
 import { loginGuard } from './guards/login.guard';
+import { HomePage } from './pages/home/home.page';
+import { ProfilePage } from './pages/profile/profile.page';
 
 export const routes: Routes = [
   {
-    path: 'home',
-    loadComponent: () => import('./pages/home/home.page').then((m) => m.HomePage),
+    path: 'main',
+    loadComponent: () => import('./layouts/main-content/main-content.component').then((m) => m.MainContentComponent),
     canActivate: [authGuard],
+    children: [
+      {
+        path: 'home',
+        component: HomePage,
+      },
+      {
+        path: 'profile',
+        component: ProfilePage,
+      },
+    ]
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'main/home',
     pathMatch: 'full',
   },
   {
@@ -21,10 +33,5 @@ export const routes: Routes = [
   {
     path: 'register',
     loadComponent: () => import('./pages/register/register.page').then( m => m.RegisterPage)
-  },
-  {
-    path: 'profile',
-    loadComponent: () => import('./pages/profile/profile.page').then( m => m.ProfilePage),
-    canActivate: [authGuard],
   },
 ];
