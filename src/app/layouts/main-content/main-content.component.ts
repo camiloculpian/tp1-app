@@ -1,9 +1,11 @@
-import { CommonModule, NgFor } from '@angular/common';
-import { Component, inject, OnChanges, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { NgFor } from '@angular/common';
+import { Component} from '@angular/core';
+import { Router, RouterLink} from '@angular/router';
 import { IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent, IonMenu, IonRouterOutlet, IonItem, IonMenuToggle, IonIcon, IonLabel } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { home , person, exit} from 'ionicons/icons';
+import { environment } from 'src/app/app.component';
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
 
 @Component({
   selector: 'app-main-content',
@@ -13,20 +15,21 @@ import { home , person, exit} from 'ionicons/icons';
   imports: [NgFor, IonIcon, RouterLink, IonItem, IonRouterOutlet, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent, IonMenu, IonMenuToggle, IonLabel],
 })
 export class MainContentComponent{
-  public activeTitle: string='Home';
+  public activeTitle!: string;
 
   public appPages = [
     { title: 'Home', url: '/main/home', icon: 'home' },
     { title: 'Perfil', url: '/main/profile', icon: 'person' },
   ];
   public labels = [];
-  constructor(private router: Router) {
+  constructor(public router: Router, private authService: AuthenticationService) {
     addIcons({ home, person, exit });
   }
 
-  changeTitle(title:string){
-    this.activeTitle = title;
-    console.log(this.activeTitle);
+  logOut(){
+    this.authService.logOut();
+    console.log('is LoggedIn?: '+environment.loggedIn)
+    this.router.navigate(['']);
   }
 
 }
