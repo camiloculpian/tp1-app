@@ -4,10 +4,12 @@ import { inject } from '@angular/core';
 
 export const loginGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
-  console.log('export const loginGuard: CanActivateFn = (route, state)')
-  if(!environment.loggedIn)
+  console.log('is LoggedIn?: '+environment.loggedIn);
+  if(environment.loggedIn == false){
     return true;
-  else
+  }else{
     router.navigate(['home']);
     return false;
+  }
+    
 };

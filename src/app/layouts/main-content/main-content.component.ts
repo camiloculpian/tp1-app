@@ -28,8 +28,7 @@ export class MainContentComponent{
 
   logOut(){
     this.authService.logOut();
-    console.log('is LoggedIn?: '+environment.loggedIn)
-    this.router.navigate(['']);
+    this.router.navigate(['login']);
   }
 
 }

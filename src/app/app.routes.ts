@@ -14,17 +14,19 @@ export const routes: Routes = [
         path: 'home',
         title: 'Home',
         component: HomePage,
+        canActivate: [authGuard],
       },
       {
         path: 'profile',
         title: 'Home',
         component: ProfilePage,
+        canActivate: [authGuard],
       },
     ]
   },
   {
     path: '',
-    redirectTo: 'main/home',
+    redirectTo: '/main/home',
     pathMatch: 'full',
   },
   {

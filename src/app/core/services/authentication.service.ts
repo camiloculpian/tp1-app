@@ -12,9 +12,9 @@ export class AuthenticationService {
     if(credentials.email=='test@dominio.com' && credentials.password == 'test'){
       environment.loggedIn=true;
       environment.username = credentials.email;
-      environment.name = 'Test User'
-      environment.lastName = 'Lastname'
-      environment.profilePicture = 'image/url'
+      environment.name = 'Test User';
+      environment.lastName = 'Lastname';
+      environment.profilePicture = 'image/url';
       return true;
     }else{
       return false;
@@ -23,9 +23,10 @@ export class AuthenticationService {
   logOut(){
     environment.loggedIn=false;
     environment.username = '';
-    environment.name = ''
-    environment.lastName = ''
-    environment.profilePicture = ''
+    environment.name = '';
+    environment.lastName = '';
+    environment.profilePicture = '';
+    return true;
   }
 
 }
