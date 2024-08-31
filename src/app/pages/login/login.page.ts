@@ -1,11 +1,10 @@
 import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormControl, FormGroup, FormsModule, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, Validators, ReactiveFormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonItem, IonLabel, IonText, IonIcon, IonButton } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
-import {addIcons} from "ionicons";
+import { addIcons } from "ionicons";
 import { eyeOutline, eyeOffOutline } from 'ionicons/icons';
-import { environment } from 'src/app/app.component';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 
 @Component({
@@ -17,7 +16,7 @@ import { AuthenticationService } from 'src/app/core/services/authentication.serv
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class LoginPage implements OnInit {
-  public loginForm: FormGroup;
+  public loginForm!: FormGroup;
   showPassword = false;
   isAlertOpen = false;
   alertButtons = ['Aceptar'];
@@ -28,14 +27,13 @@ export class LoginPage implements OnInit {
     private authService : AuthenticationService,
   ) { 
       addIcons({ eyeOutline, eyeOffOutline, });
-
-      this.loginForm  = formBuilder.group({
-        email: ['test@dominio.com', [Validators.required, Validators.email]],
-        password: ['test', [Validators.required, Validators.minLength(4)]],
-      });
   }
 
   ngOnInit() {
+    this.loginForm  = this.formBuilder.group({
+      email: ['test@dominio.com', [Validators.required, Validators.email]],
+      password: ['test', [Validators.required, Validators.minLength(4)]],
+    });
   }
 
   setOpen(isOpen: boolean) {
@@ -45,10 +43,8 @@ export class LoginPage implements OnInit {
   login() {
     if(this.authService.login(this.loginForm.value)){
       this.router.navigate(['']);
-      console.log('Estas logueado? '+environment.loggedIn);
     }else{
       this.setOpen(true);
-      console.log('Estas logueado? '+environment.loggedIn);
     }
   }
 

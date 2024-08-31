@@ -6,9 +6,24 @@
   </ion-header>
 
   <div id="container">
-    <ion-icon name="person"  style="zoom:4.0;"></ion-icon>
-    <ion-text>Nombre de Usuario:</ion-text><ion-input></ion-input>
-    <ion-text>Apellido</ion-text><ion-input></ion-input>
-    <ion-text>Nombres</ion-text><ion-input></ion-input>
+    <form [formGroup]="userDataForm">
+      <ion-avatar style="margin: 0 auto;">
+        <ion-icon name="person"  style="zoom:4.0;"></ion-icon>
+      </ion-avatar>
+      <ion-label>Email:</ion-label>
+      <ion-input type="email" formControlName="email" ngDefaultControl></ion-input>
+
+      <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="errors">
+        <ion-text color="danger" *ngIf="email?.hasError('required')">
+          El email es requerido
+        </ion-text>
+        <ion-text color="danger" *ngIf="email?.hasError('email')">
+          El email es invalido
+        </ion-text>
+      </div>
+
+      <ion-text>Apellido</ion-text><ion-input></ion-input>
+      <ion-text>Nombres</ion-text><ion-input></ion-input>
+    </form>
   </div>
 </ion-content>
