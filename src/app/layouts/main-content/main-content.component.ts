@@ -1,6 +1,6 @@
 import { NgFor } from '@angular/common';
 import { Component} from '@angular/core';
-import { Router, RouterLink} from '@angular/router';
+import { ActivatedRoute, Router, RouterLink} from '@angular/router';
 import { IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent, IonMenu, IonRouterOutlet, IonItem, IonMenuToggle, IonIcon, IonLabel, IonItemDivider } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { home , person, exit} from 'ionicons/icons';
@@ -22,7 +22,10 @@ export class MainContentComponent{
     { title: 'Perfil', url: '/main/profile', icon: 'person' },
   ];
   public labels = [];
-  constructor(public router: Router, private authService: AuthenticationService) {
+  constructor(public router: Router, private authService: AuthenticationService, public readonly route: ActivatedRoute) {
+    this.route.title.subscribe(() => {
+      console.log(this.route?.root?.firstChild?.snapshot.data)
+    });
     addIcons({ home, person, exit });
   }
 

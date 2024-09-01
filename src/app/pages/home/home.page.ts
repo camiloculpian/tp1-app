@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Output, output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IonInput, IonText, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonApp, IonRouterOutlet, IonTabs, IonTabBar, IonIcon } from '@ionic/angular/standalone';
 import { environment } from 'src/app/app.component';
 import { person} from 'ionicons/icons';
