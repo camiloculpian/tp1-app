@@ -12,13 +12,13 @@ export const routes: Routes = [
     children: [
       {
         path: 'home',
-        title: 'Home',
+        data: {title: 'Home'},
         component: HomePage,
         canActivate: [authGuard],
       },
       {
         path: 'profile',
-        title: 'Home',
+        data: {title: 'Perfil'},
         component: ProfilePage,
         canActivate: [authGuard],
       },
@@ -31,11 +31,13 @@ export const routes: Routes = [
   },
   {
     path: 'login',
+    data: {title: 'Login'},
     loadComponent: () => import('./pages/login/login.page').then( m => m.LoginPage),
     canActivate: [loginGuard],
   },
   {
     path: 'register',
+    data: {title: 'Registrarse'},
     loadComponent: () => import('./pages/register/register.page').then( m => m.RegisterPage)
   },
 ];
