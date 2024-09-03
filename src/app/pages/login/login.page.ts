@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, FormsModule, Validators, ReactiveFormsModule } 
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonItem, IonLabel, IonText, IonIcon, IonButton } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { addIcons } from "ionicons";
-import { eyeOutline, eyeOffOutline } from 'ionicons/icons';
+import { eyeOutline, eyeOffOutline, person, lockClosed } from 'ionicons/icons';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 
 @Component({
@@ -26,7 +26,7 @@ export class LoginPage implements OnInit {
     private router: Router,
     private authService : AuthenticationService,
   ) { 
-      addIcons({ eyeOutline, eyeOffOutline, });
+      addIcons({person, lockClosed});
   }
 
   ngOnInit() {
