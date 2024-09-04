@@ -29,6 +29,7 @@ export class ProfilePage implements OnInit {
   ngOnInit() {
     this.userDataForm  = this.formBuilder.group({
       email: [environment.username, [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(4)]],
       lastName: [environment.lastName, [Validators.required, Validators.email]],
       name: [environment.name, [Validators.required, Validators.email]],
     });
