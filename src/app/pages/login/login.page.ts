@@ -26,7 +26,7 @@ export class LoginPage implements OnInit {
     private router: Router,
     private authService : AuthenticationService,
   ) { 
-      addIcons({person, lockClosed});
+      addIcons({person, lockClosed, eyeOutline, eyeOffOutline});
   }
 
   ngOnInit() {
