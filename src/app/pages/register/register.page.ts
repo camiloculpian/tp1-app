@@ -5,6 +5,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonIcon, IonText, IonInput
 import { addIcons } from "ionicons";
 import { person } from "ionicons/icons";
 import { environment } from 'src/app/app.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,7 @@ import { environment } from 'src/app/app.component';
 })
 export class RegisterPage implements OnInit {
   public userDataForm!: FormGroup;
-  constructor(public formBuilder: FormBuilder,) {
+  constructor(public formBuilder: FormBuilder,private router: Router,) {
       addIcons({person}); }
 
       ngOnInit() {
@@ -27,5 +28,9 @@ export class RegisterPage implements OnInit {
           name: ['', [Validators.required, Validators.email]],
         });
       }
-
+      
+      register(e:Event){
+        e.preventDefault();
+        this.router.navigate(['login']);
+      }
 }
