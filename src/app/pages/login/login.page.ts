@@ -26,13 +26,13 @@ export class LoginPage implements OnInit {
     private router: Router,
     private authService : AuthenticationService,
   ) { 
-      addIcons({person, lockClosed, eyeOutline, eyeOffOutline});
+      addIcons({person,lockClosed, eyeOutline, eyeOffOutline});
   }
 
   ngOnInit() {
     this.loginForm  = this.formBuilder.group({
-      email: ['test@dominio.com', [Validators.required, Validators.email]],
-      password: ['test', [Validators.required, Validators.minLength(4)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(4)]],
     });
   }
 
