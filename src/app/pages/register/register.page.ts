@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonIcon, IonText, IonInput, IonLabel, IonItem, IonAvatar, IonCol } from '@ionic/angular/standalone';
 import { addIcons } from "ionicons";
-import { person } from "ionicons/icons";
+import { pencil, person } from "ionicons/icons";
 import { environment } from 'src/app/app.component';
 import { Router } from '@angular/router';
 
@@ -18,7 +18,7 @@ import { Router } from '@angular/router';
 export class RegisterPage implements OnInit {
   public userDataForm!: FormGroup;
   constructor(public formBuilder: FormBuilder,private router: Router,) {
-      addIcons({person}); }
+      addIcons({person, pencil}); }
 
       ngOnInit() {
         this.userDataForm  = this.formBuilder.group({

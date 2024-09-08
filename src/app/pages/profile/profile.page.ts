@@ -2,7 +2,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonIcon, IonText, IonInput, IonLabel, IonItem, IonAvatar } from '@ionic/angular/standalone';
-import { person} from 'ionicons/icons';
+import { person, pencil} from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import { environment } from 'src/app/app.component';
 
@@ -23,7 +23,7 @@ export class ProfilePage implements OnInit {
     // this.email = environment.username;
     // this.lastName = environment.lastName;
     // this.name = environment.name;
-    addIcons({ person });
+    addIcons({ person, pencil });
   }
 
   ngOnInit() {
