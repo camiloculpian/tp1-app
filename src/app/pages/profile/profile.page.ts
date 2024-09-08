@@ -5,6 +5,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonIcon, IonText, IonInput
 import { person, pencil} from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import { environment } from 'src/app/app.component';
+import {  Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -19,11 +20,11 @@ export class ProfilePage implements OnInit {
   // lastName!: string;
   // name!: string;
   public userDataForm!: FormGroup;
-  constructor(public formBuilder: FormBuilder,) {
+  constructor(public formBuilder: FormBuilder, private router: Router) {
     // this.email = environment.username;
     // this.lastName = environment.lastName;
     // this.name = environment.name;
-    addIcons({ person, pencil });
+    addIcons({pencil});
   }
 
   ngOnInit() {
@@ -33,6 +34,11 @@ export class ProfilePage implements OnInit {
       lastName: [environment.lastName, [Validators.required, Validators.email]],
       name: [environment.name, [Validators.required, Validators.email]],
     });
+  }
+
+  onSave(e:Event){
+    e.preventDefault();
+    this.router.navigate(['']);
   }
 
   get email() {

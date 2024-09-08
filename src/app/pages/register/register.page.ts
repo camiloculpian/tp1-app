@@ -18,7 +18,7 @@ import { Router } from '@angular/router';
 export class RegisterPage implements OnInit {
   public userDataForm!: FormGroup;
   constructor(public formBuilder: FormBuilder,private router: Router,) {
-      addIcons({person, pencil}); }
+      addIcons({pencil}); }
 
       ngOnInit() {
         this.userDataForm  = this.formBuilder.group({
