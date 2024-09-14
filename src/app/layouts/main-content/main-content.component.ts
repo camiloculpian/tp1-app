@@ -5,7 +5,6 @@ import { ActivatedRoute, NavigationEnd, Router, RouterLink} from '@angular/route
 import { IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent, IonMenu, IonRouterOutlet, IonItem, IonMenuToggle, IonIcon, IonLabel, IonItemDivider } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { home , person, exit} from 'ionicons/icons';
-import { environment } from 'src/app/app.component';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 
 @Component({
@@ -53,6 +52,14 @@ export class MainContentComponent{
     this.router.navigate(['login']);
   }
 
+  ionViewDidEnter() {
+    // this.backButtonSubscription =
+    //   this.platform.backButton.subscribeWithPriority(10, () => {
+    //     if (this.router.url === '/home') {
+    //       (navigator as any).app.exitApp();
+    //     }
+    //   });
+  }
 }
 
 
